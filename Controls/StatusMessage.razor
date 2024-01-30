@@ -1,0 +1,94 @@
+﻿@rendermode InteractiveServer
+
+<Toasts class="p-3" Messages="Messages" Placement="Placement" />
+
+@code {
+    public ToastsPlacement Placement { get; set; } = ToastsPlacement.TopRight;
+    private List<ToastMessage> Messages = new List<ToastMessage>();
+
+    public void Show(Exception exc) {
+        Messages.Add(new ToastMessage {
+            Type = ToastType.Danger,
+            Title = "ERROR",
+            HelpText = "Exception",
+            Message = exc.Message
+        });
+    }
+
+    public void ShowError(string message, string title = "ERROR") {
+        Messages.Add(new ToastMessage {
+            Type = ToastType.Danger,
+            Title = title,
+            Message = message
+        });
+    }
+
+    public void ShowSuccess(string message, string title = "SUCCESS") {
+        Messages.Add(new ToastMessage {
+            Type = ToastType.Success,
+            Title = title,
+            Message = message
+        });
+    }
+
+    public void ShowInfo(string message, string title = "INFO") {
+        Messages.Add(new ToastMessage {
+            Type = ToastType.Info,
+            Title = title,
+            Message = message
+        });
+    }
+
+    public void ShowWarning(string message, string title = "WARNING") {
+        Messages.Add(new ToastMessage {
+            Type = ToastType.Warning,
+            Title = title,
+            Message = message
+        });
+    }
+
+    public void ShowError(string message, string helpText, string title = "ERROR") {
+        Messages.Add(new ToastMessage {
+            Type = ToastType.Danger,
+            Title = title,
+            HelpText = helpText,
+            Message = message
+        });
+    }
+
+    public void ShowError(Exception exc, string helpText, string title = "ERROR") {
+        Messages.Add(new ToastMessage {
+            Type = ToastType.Danger,
+            Title = title,
+            HelpText = helpText,
+            Message = exc.Message
+        });
+    }
+
+    public void ShowSuccess(string message, string helpText, string title = "SUCCESS") {
+        Messages.Add(new ToastMessage {
+            Type = ToastType.Success,
+            Title = title,
+            HelpText = helpText,
+            Message = message
+        });
+    }
+
+    public void ShowInfo(string message, string helpText, string title = "INFO") {
+        Messages.Add(new ToastMessage {
+            Type = ToastType.Info,
+            Title = title,
+            HelpText = helpText,
+            Message = message
+        });
+    }
+
+    public void ShowWarning(string message, string helpText, string title = "WARNING") {
+        Messages.Add(new ToastMessage {
+            Type = ToastType.Warning,
+            Title = title,
+            HelpText = helpText,
+            Message = message
+        });
+    }
+}
