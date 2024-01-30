@@ -1,4 +1,6 @@
 using BlazorBootstrapIssue512Demo.Components;
+using BlazorBootstrapIssue512Demo.Services;
+using BlazorBootstrapIssue512Demo.Services.Interfaces;
 
 namespace BlazorBootstrapIssue512Demo {
     public class Program {
@@ -8,7 +10,8 @@ namespace BlazorBootstrapIssue512Demo {
             // Add services to the container.
             builder.Services.AddRazorComponents()
                 .AddInteractiveServerComponents();
-
+            builder.Services.AddSingleton<IDemoService, DemoService>();
+            builder.Services.AddBlazorBootstrap();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

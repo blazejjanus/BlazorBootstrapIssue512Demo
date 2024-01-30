@@ -15,6 +15,14 @@
         });
     }
 
+    public void Show(APIResponse response) {
+        if(response.Success) {
+            ShowSuccess(response.GetStatusString());
+        } else {
+            ShowError(response.GetStatusString());
+        }
+    }
+
     public void ShowError(string message, string title = "ERROR") {
         Messages.Add(new ToastMessage {
             Type = ToastType.Danger,
@@ -27,67 +35,6 @@
         Messages.Add(new ToastMessage {
             Type = ToastType.Success,
             Title = title,
-            Message = message
-        });
-    }
-
-    public void ShowInfo(string message, string title = "INFO") {
-        Messages.Add(new ToastMessage {
-            Type = ToastType.Info,
-            Title = title,
-            Message = message
-        });
-    }
-
-    public void ShowWarning(string message, string title = "WARNING") {
-        Messages.Add(new ToastMessage {
-            Type = ToastType.Warning,
-            Title = title,
-            Message = message
-        });
-    }
-
-    public void ShowError(string message, string helpText, string title = "ERROR") {
-        Messages.Add(new ToastMessage {
-            Type = ToastType.Danger,
-            Title = title,
-            HelpText = helpText,
-            Message = message
-        });
-    }
-
-    public void ShowError(Exception exc, string helpText, string title = "ERROR") {
-        Messages.Add(new ToastMessage {
-            Type = ToastType.Danger,
-            Title = title,
-            HelpText = helpText,
-            Message = exc.Message
-        });
-    }
-
-    public void ShowSuccess(string message, string helpText, string title = "SUCCESS") {
-        Messages.Add(new ToastMessage {
-            Type = ToastType.Success,
-            Title = title,
-            HelpText = helpText,
-            Message = message
-        });
-    }
-
-    public void ShowInfo(string message, string helpText, string title = "INFO") {
-        Messages.Add(new ToastMessage {
-            Type = ToastType.Info,
-            Title = title,
-            HelpText = helpText,
-            Message = message
-        });
-    }
-
-    public void ShowWarning(string message, string helpText, string title = "WARNING") {
-        Messages.Add(new ToastMessage {
-            Type = ToastType.Warning,
-            Title = title,
-            HelpText = helpText,
             Message = message
         });
     }

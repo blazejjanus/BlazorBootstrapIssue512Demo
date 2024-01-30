@@ -1,7 +1,35 @@
 ﻿@page "/"
+@rendermode InteractiveServer
 
-<PageTitle>Home</PageTitle>
+<StatusMessage @ref="status" />
 
-<h1>Hello, world!</h1>
+<PageTitle>Demo</PageTitle>
 
-Welcome to your new app.
+<h1>Click button to get toast</h1>
+<Button Color="ButtonColor.Primary" @onclick="OnClickSuccess">Success</Button>
+<Button Color="ButtonColor.Danger" @onclick="OnClickFailure">Failure</Button>
+<br />
+<h3>Last Message:</h3>
+<p>@LastMessage</p>
+
+
+@code{
+    [Inject]
+    private IDemoService Service { get; set; }
+    private StatusMessage status = new StatusMessage();
+    private string LastMessage { get; set; }
+
+    private void OnClickSuccess(){
+        var response = Service.GetSuccess();
+        Console.WriteLine("Service response: " + response.GetStatusString());
+        LastMessage = response.GetStatusString();
+        status.Show(response);
+    }
+
+    private void OnClickFailure(){
+        var response = Service.GetFailure();
+        Console.WriteLine("Service response: " + response.GetStatusString());
+        LastMessage = response.GetStatusString();
+        status.Show(response);
+    }
+}
